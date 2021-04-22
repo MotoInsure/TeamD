@@ -14,6 +14,8 @@ public class NewDemo<K> {
 	public void setData(K data) {
 		this.data = data;
 	};
+
+	// comment added - hemaja
 	public static void main(String[] args) {
 		NewDemo<String> d1= new NewDemo<String>("Hii");
 		//d1.setData(1001);
