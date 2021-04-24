@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ibm.motoInsure.entity.Admin;
 import com.ibm.motoInsure.service.AdminService;
 
-@Controller
 @RestController
 public class AdminController {
 	
