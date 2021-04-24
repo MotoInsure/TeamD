@@ -1,4 +1,5 @@
 package com.ibm.motoInsure.entity;
+
 import javax.persistence.*;
 
 @Entity
