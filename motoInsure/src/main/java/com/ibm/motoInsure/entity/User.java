@@ -1,0 +1,105 @@
+package com.ibm.motoInsure.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="user_details")
+@SequenceGenerator(name="userseq", sequenceName="seq_user", initialValue =101)
+public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userseq")
+	@Column(name="user_id")
+	private int id;
+	private String userName;
+	@Column(name="user_contact", length=10)
+	private double phoneNo;
+	private String password;
+	private String email;
+	private String state;
+	private String city;
+	private String registrationNo;
+	
+	@OneToOne
+	private Policy policy;
+	@ManyToMany
+	@JoinTable(name="user_vehicle",
+			joinColumns= @JoinColumn(name="user_id"),
+			inverseJoinColumns = @JoinColumn(name="vehicle_id"))
+	private List<Vehicle>vehicles = new ArrayList<>();
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public double getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(double phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getRegistrationNo() {
+		return registrationNo;
+	}
+	public void setRegistrationNo(String registrationNo) {
+		this.registrationNo = registrationNo;
+	}
+	public Policy getPolicy() {
+		return policy;
+	}
+	public void setPolicy(Policy policy) {
+		this.policy = policy;
+	}
+	public List<Vehicle> getVehicles() {
+		return vehicles;
+	}
+	public void setVehicles(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
+	
+	
+}
