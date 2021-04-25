@@ -11,6 +11,6 @@ public interface PolicyService {
 //(no need)	int addPolicy(Policy policy);
 	
 	double idvCalculation(Vehicle vehicle);
-	//tenure cal for policy amount
-	// max-claim amount
+	double policyAmount(Vehicle vehicle, String policyType);
+	double maxPolicyClaim(Vehicle vehicle);
 }
