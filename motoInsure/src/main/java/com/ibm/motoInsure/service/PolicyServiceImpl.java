@@ -15,8 +15,9 @@ public class PolicyServiceImpl implements PolicyService {
 	@Autowired
 	private PolicyRepo policyRepo;
 	
+	// divided every part to methods for easy understanding
+	
 	public int vehicleAge(Vehicle vehicle) {
-
 		return LocalDate.now().getYear() - vehicle.getPurchasingYear().getYear();
 	}
 	
