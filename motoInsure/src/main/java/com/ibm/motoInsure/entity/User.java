@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-//
+
 @Entity
 @Table(name="user_details")
 @SequenceGenerator(name="userseq", sequenceName="seq_user", initialValue =101)
