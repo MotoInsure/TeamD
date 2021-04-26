@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="vehicle")
+@Table(name="global_vehicles")
 
 public class VehicleDetails {
 	@Id
