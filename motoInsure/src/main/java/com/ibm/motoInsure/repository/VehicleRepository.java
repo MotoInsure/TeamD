@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ibm.motoInsure.entity.Vehicle;
 
-public interface VehicleRepo extends JpaRepository<Vehicle,Integer> {
+public interface VehicleRepository extends JpaRepository<Vehicle,Integer> {
 	public List<Vehicle> findByType(String type);
 		
 }

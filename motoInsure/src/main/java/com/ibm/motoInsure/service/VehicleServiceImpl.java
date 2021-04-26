@@ -1,5 +1,6 @@
 package com.ibm.motoInsure.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ibm.motoInsure.entity.Vehicle;
-import com.ibm.motoInsure.repository.VehicleRepo;
+import com.ibm.motoInsure.repository.VehicleRepository;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
 	
 	List<Vehicle> vehicle_list = new ArrayList<>();
 	@Autowired 
-	private VehicleRepo vr;
+	private VehicleRepository vr;
 	
 	@Override
 	public int addVehicle(Vehicle vehicle) {
@@ -59,8 +60,8 @@ public class VehicleServiceImpl implements VehicleService {
 		return hashmap.keySet();
 	}
 	@Override
-	public Set<Date> getPurchasedYear(String variant) {
-		HashMap<Date, Integer> hashmap = new HashMap();
+	public Set<LocalDate> getPurchasedYear(String variant) {
+		HashMap<LocalDate, Integer> hashmap = new HashMap();
 		for (Vehicle vehicle : vehicle_list)
 			if(vehicle.getVariant().equalsIgnoreCase(variant))
 				hashmap.put(vehicle.getPurchasingYear(),vehicle.getId());

@@ -1,6 +1,6 @@
 package com.ibm.motoInsure.controller;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -48,7 +48,7 @@ public class VehicleController {
 		return vs.getVariant(fuelType, brand);
 	}
 	@GetMapping(value="/getVehicle/{type}/{brand}/{model}/{fuelType}/{variant}", produces="application/json")
-	public Set<Date> getPurchasedYear(@PathVariable String variant) {
+	public Set<LocalDate> getPurchasedYear(@PathVariable String variant) {
 		return vs.getPurchasedYear(variant);
 	}
 	

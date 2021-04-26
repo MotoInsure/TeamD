@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -31,11 +31,10 @@ public class User {
 	private String email;
 	private String state;
 	private String city;
-	private String registrationNo;
 	
 	@OneToOne
 	private Policy policy;
-	@ManyToMany
+	@OneToMany
 	@JoinTable(name="user_vehicle",
 			joinColumns= @JoinColumn(name="user_id"),
 			inverseJoinColumns = @JoinColumn(name="vehicle_id"))
@@ -81,12 +80,6 @@ public class User {
 	}
 	public void setCity(String city) {
 		this.city = city;
-	}
-	public String getRegistrationNo() {
-		return registrationNo;
-	}
-	public void setRegistrationNo(String registrationNo) {
-		this.registrationNo = registrationNo;
 	}
 	public Policy getPolicy() {
 		return policy;

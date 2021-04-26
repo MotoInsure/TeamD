@@ -6,6 +6,6 @@ import com.ibm.motoInsure.entity.Admin;
 
 
 
-public interface AdminRepo extends JpaRepository<Admin,Integer> {
+public interface AdminRepository extends JpaRepository<Admin,Integer> {
 
 }

@@ -1,6 +1,6 @@
 package com.ibm.motoInsure.service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -16,6 +16,6 @@ public interface VehicleService {
 	Set<String> getModel(String Brand);
 	Set<String> getFuelType(String model);
 	Set<String> getVariant(String fuelType, String brand);
-	Set<Date> getPurchasedYear(String variant);
+	Set<LocalDate> getPurchasedYear(String variant);
 
 }

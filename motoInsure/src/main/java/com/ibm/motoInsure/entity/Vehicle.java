@@ -1,5 +1,6 @@
 package com.ibm.motoInsure.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ public class Vehicle {
 	private String model;
 	private String variant;
 	private String fuelType;
-	private Date purchasingYear;
+	private LocalDate purchasingYear;
 	private double price;
 	public int getId() {
 		return id;
@@ -61,10 +62,11 @@ public class Vehicle {
 	public void setFuelType(String fuelType) {
 		this.fuelType = fuelType;
 	}
-	public Date getPurchasingYear() {
+	
+	public LocalDate getPurchasingYear() {
 		return purchasingYear;
 	}
-	public void setPurchasingYear(Date purchasingYear) {
+	public void setPurchasingYear(LocalDate purchasingYear) {
 		this.purchasingYear = purchasingYear;
 	}
 	public double getPrice() {
