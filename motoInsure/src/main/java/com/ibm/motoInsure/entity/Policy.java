@@ -16,7 +16,6 @@ public class Policy {
 	private double idv;
 	private double policyAmount;
 	private double maxClaimAmount;
-	private int tenure;
 	private Date purchasedDate;
 	private Date expiryDate;
 	public int getId() {
@@ -49,12 +48,7 @@ public class Policy {
 	public void setMaxClaimAmount(double maxClaimAmount) {
 		this.maxClaimAmount = maxClaimAmount;
 	}
-	public int getTenure() {
-		return tenure;
-	}
-	public void setTenure(int tenure) {
-		this.tenure = tenure;
-	}
+	
 	public Date getPurchasedDate() {
 		return purchasedDate;
 	}

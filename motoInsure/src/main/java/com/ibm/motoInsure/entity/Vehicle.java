@@ -1,6 +1,12 @@
 package com.ibm.motoInsure.entity;
 
+
 import java.time.LocalDate;
+
+import java.time.LocalDate;
+//
+import java.util.ArrayList;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -62,7 +68,7 @@ public class Vehicle {
 	public void setFuelType(String fuelType) {
 		this.fuelType = fuelType;
 	}
-	
+
 	public LocalDate getPurchasingYear() {
 		return purchasingYear;
 	}
