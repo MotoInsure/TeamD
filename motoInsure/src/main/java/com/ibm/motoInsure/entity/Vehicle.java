@@ -22,8 +22,6 @@ public class Vehicle {
 	private String type;
 	private String brand;
 	private String model;
-	private String variant;
-	private String fuelType;
 	private LocalDate purchasingYear;
 	private double price;
 	public int getId() {
@@ -49,18 +47,6 @@ public class Vehicle {
 	}
 	public void setModel(String model) {
 		this.model = model;
-	}
-	public String getVariant() {
-		return variant;
-	}
-	public void setVariant(String variant) {
-		this.variant = variant;
-	}
-	public String getFuelType() {
-		return fuelType;
-	}
-	public void setFuelType(String fuelType) {
-		this.fuelType = fuelType;
 	}
 	
 	public LocalDate getPurchasingYear() {
