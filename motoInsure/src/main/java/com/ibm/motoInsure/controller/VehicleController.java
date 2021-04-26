@@ -32,8 +32,6 @@ public class VehicleController {
 	
 	@GetMapping(value="/getVehicle/{type}")
 	public List getBrand(@PathVariable String type) {
-		//vs.getBrand(type);
-		//vs.getBrand(type);		
 		return vs.getBrand(type);
 	}
 	@GetMapping(value="/getVehicle/{type}/{brand}", produces="application/json")

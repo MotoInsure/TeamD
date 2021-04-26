@@ -26,9 +26,8 @@ public class VehicleServiceImpl implements VehicleService {
 	}
 	@Override
 	public List getBrand(String type) {
-		System.out.println(vr.findByType(type));
 		vehicle_list=vr.findByType(type);
-		return vr.findByType(type);
+		return vehicle_list;
 	}
 	@Override
 	public Set<String> getModel(String Brand) {
