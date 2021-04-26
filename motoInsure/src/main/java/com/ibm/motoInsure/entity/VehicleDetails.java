@@ -2,10 +2,13 @@ package com.ibm.motoInsure.entity;
 
 import java.time.LocalDate;
 
+
 import javax.persistence.*;
 
+
 @Entity
-@Table(name="global_vehicles")
+@Table(name="vehicle")
+
 public class VehicleDetails {
 	@Id
 	private String registrationNo;
