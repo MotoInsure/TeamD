@@ -11,6 +11,7 @@ import javax.persistence.*;
 
 public class VehicleDetails {
 	@Id
+	private int id;
 	private String registrationNo;
 	private String type;
 	private String brand;

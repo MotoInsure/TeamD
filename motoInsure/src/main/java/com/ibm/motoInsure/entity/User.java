@@ -33,11 +33,12 @@ public class User {
 	private String city;
 	
 	@OneToOne
+	@JoinColumn(name="policy_id")
 	private Policy policy;
 	@OneToMany
 	@JoinTable(name="user_vehicle",
 			joinColumns= @JoinColumn(name="user_id"),
-			inverseJoinColumns = @JoinColumn(name="registration_no"))
+			inverseJoinColumns = @JoinColumn(name="vehicle_id"))
 	private List<VehicleDetails>vehiclesDetails = new ArrayList<>();
 	public int getId() {
 		return id;
