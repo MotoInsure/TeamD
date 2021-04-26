@@ -1,8 +1,6 @@
 package com.ibm.motoInsure.service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -39,34 +37,6 @@ public class VehicleServiceImpl implements VehicleService {
 		
 		return hashmap.keySet();
 		
-	}
-	
-	@Override
-	public Set<String> getFuelType(String model) {
-		HashMap<String, Integer> hashmap = new HashMap();
-		for (Vehicle vehicle : vehicle_list) 
-			if(vehicle.getModel().equalsIgnoreCase(model))
-				hashmap.put(vehicle.getFuelType(),vehicle.getId());
-		
-		return hashmap.keySet();
-	}
-	@Override
-	public Set<String> getVariant(String fuelType, String brand) {
-		HashMap<String, Integer> hashmap = new HashMap();
-		for (Vehicle vehicle : vehicle_list)
-			if(vehicle.getFuelType().equalsIgnoreCase(fuelType) && vehicle.getBrand().equalsIgnoreCase(brand))
-				hashmap.put(vehicle.getVariant(),vehicle.getId());
-		
-		return hashmap.keySet();
-	}
-	@Override
-	public Set<LocalDate> getPurchasedYear(String variant) {
-		HashMap<LocalDate, Integer> hashmap = new HashMap();
-		for (Vehicle vehicle : vehicle_list)
-			if(vehicle.getVariant().equalsIgnoreCase(variant))
-				hashmap.put(vehicle.getPurchasingYear(),vehicle.getId());
-		
-		return hashmap.keySet();
 	}
 	
 	
