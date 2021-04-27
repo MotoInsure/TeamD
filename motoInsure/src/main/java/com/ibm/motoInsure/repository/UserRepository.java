@@ -6,5 +6,5 @@ import com.ibm.motoInsure.entity.User;
 
 
 public interface UserRepository extends JpaRepository<User,Integer> {
-
+	User findByUserNameAndPassword(String name, String password);
 }

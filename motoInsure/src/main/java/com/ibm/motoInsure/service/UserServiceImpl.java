@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ibm.motoInsure.bean.Login;
 import com.ibm.motoInsure.entity.Policy;
 import com.ibm.motoInsure.entity.User;
 import com.ibm.motoInsure.entity.VehicleDetails;
@@ -36,6 +37,10 @@ public class UserServiceImpl implements UserService {
 		u.getVehiclesDetails().add(vd);
 		ur.save(u);		
 		return u.getId();
+	}
+	@Override
+	public User validate(Login login) {
+		return ur.findByUserNameAndPassword(login.getUsername(), login.getPassword());
 	}
 
 }
