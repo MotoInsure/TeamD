@@ -18,6 +18,8 @@ public class Policy {
 	private double maxClaimAmount;
 	private Date purchasedDate;
 	private Date expiryDate;
+	
+	
 	public int getId() {
 		return id;
 	}
