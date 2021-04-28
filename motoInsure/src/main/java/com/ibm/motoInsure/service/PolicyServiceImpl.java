@@ -6,13 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ibm.motoInsure.entity.Vehicle;
-import com.ibm.motoInsure.repository.PolicyRepository;
 
 @Service
 public class PolicyServiceImpl implements PolicyService {
 
-	//@Autowired
-	//private PolicyRepository policyRepository;
 	
 	// divided every part to methods for easy understanding
 	
@@ -61,11 +58,12 @@ public class PolicyServiceImpl implements PolicyService {
 	
 	
 	
-	
+
 /*	(no need)
  * @Override
 	public int addPolicy(Policy policy) {
 		//policyRepository.save(policy);
+
 		  //return ;   
 		  
 		  //This will only return the whole policy added to the table

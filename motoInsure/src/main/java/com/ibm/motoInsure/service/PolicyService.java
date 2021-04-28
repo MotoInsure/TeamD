@@ -1,8 +1,7 @@
 package com.ibm.motoInsure.service;
 
 import org.springframework.stereotype.Service;
-
-import com.ibm.motoInsure.entity.Vehicle;
+import com.ibm.motoInsure.entity.Policy;
 
 @Service
 public interface PolicyService {

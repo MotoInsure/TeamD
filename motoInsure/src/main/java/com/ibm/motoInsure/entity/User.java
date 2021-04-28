@@ -37,8 +37,8 @@ public class User {
 	@OneToMany
 	@JoinTable(name="user_vehicle",
 			joinColumns= @JoinColumn(name="user_id"),
-			inverseJoinColumns = @JoinColumn(name="vehicle_id"))
-	private List<Vehicle>vehicles = new ArrayList<>();
+			inverseJoinColumns = @JoinColumn(name="registration_no"))
+	private List<VehicleDetails>vehiclesDetails = new ArrayList<>();
 	public int getId() {
 		return id;
 	}
@@ -87,12 +87,13 @@ public class User {
 	public void setPolicy(Policy policy) {
 		this.policy = policy;
 	}
-	public List<Vehicle> getVehicles() {
-		return vehicles;
+	public List<VehicleDetails> getVehiclesDetails() {
+		return vehiclesDetails;
 	}
-	public void setVehicles(List<Vehicle> vehicles) {
-		this.vehicles = vehicles;
+	public void setVehiclesDetails(List<VehicleDetails> vehiclesDetails) {
+		this.vehiclesDetails = vehiclesDetails;
 	}
+	
 	
 	
 }
