@@ -1,11 +1,11 @@
 package com.ibm.motoInsure.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ibm.motoInsure.EncodeDecode.Encryption;
+import com.ibm.motoInsure.Exception.InvalidPolicyException;
+import com.ibm.motoInsure.Exception.InvalidUserException;
 import com.ibm.motoInsure.bean.Login;
 import com.ibm.motoInsure.entity.Policy;
 import com.ibm.motoInsure.entity.User;
@@ -23,9 +23,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private VehicleDetailsRepository vr;
 	@Override
-	public int addPolicyToUser(int userId, int policyId) {
-		User u = ur.findById(userId).get(); 
-		Policy p = pr.findById(policyId).get();		
+	public int addPolicyToUser(int userId, int policyId) throws InvalidUserException, InvalidPolicyException {
+		User u = ur.findById(userId).orElseThrow(()->new InvalidUserException("Invalid User")); 
+		Policy p = pr.findById(policyId).orElseThrow(()->new InvalidPolicyException("Policy hasn't created."));		
 		u.setPolicy(p);	
 		ur.save(u);
 		return u.getId();

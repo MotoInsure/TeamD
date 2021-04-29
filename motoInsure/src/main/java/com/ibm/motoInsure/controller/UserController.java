@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.motoInsure.EncodeDecode.Encryption;
+import com.ibm.motoInsure.Exception.InvalidPolicyException;
+import com.ibm.motoInsure.Exception.InvalidUserException;
 import com.ibm.motoInsure.bean.Login;
 import com.ibm.motoInsure.entity.User;
 import com.ibm.motoInsure.service.UserService;
@@ -25,8 +27,7 @@ public class UserController {
 	private UserService us;
 	
 	@PostMapping(value="/addUser",consumes="application/json")
-	public String addUser(@RequestBody User user) {
-		
+	public String addUser(@RequestBody User user) {		
 		us.addUser(user);
 		return "User added.";
 	}
@@ -54,7 +55,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/addPolicyToUser/{userId}/{policyId}")
-	public ResponseEntity<?> addPolicyToUser(@PathVariable int userId,@PathVariable int policyId, HttpSession session) {
+	public ResponseEntity<?> addPolicyToUser(@PathVariable int userId,@PathVariable int policyId, HttpSession session) throws InvalidUserException, InvalidPolicyException {
 		if(session.getAttribute("USER")!=null){
 			return new ResponseEntity<Integer>(us.addPolicyToUser(userId, policyId), HttpStatus.OK);
 		}
