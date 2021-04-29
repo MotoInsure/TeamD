@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ibm.motoInsure.EncodeDecode.Encryption;
 import com.ibm.motoInsure.bean.Login;
 import com.ibm.motoInsure.entity.Policy;
 import com.ibm.motoInsure.entity.User;
@@ -40,7 +41,21 @@ public class UserServiceImpl implements UserService {
 	}
 	@Override
 	public User validate(Login login) {
+		Encryption encrypter = Encryption.getEncrypter();
+		login.setPassword(encrypter.EncodePassword(login.getPassword()));
 		return ur.findByUserNameAndPassword(login.getUsername(), login.getPassword());
 	}
+	@Override
+	public int addUser(User user) {
+		Encryption encrypter = Encryption.getEncrypter();
+		user.setPassword(encrypter.EncodePassword(user.getPassword()));
+		ur.save(user);
+		return user.getId();
+	}
+	@Override
+	public String forgotPassword(String uname) {		
+		return ur.findByUserName(uname).getPassword();
+	}
+	
 
 }

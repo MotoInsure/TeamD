@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ibm.motoInsure.EncodeDecode.Encryption;
 import com.ibm.motoInsure.bean.Login;
 import com.ibm.motoInsure.entity.User;
 import com.ibm.motoInsure.service.UserService;
@@ -23,6 +24,17 @@ public class UserController {
 	@Autowired 
 	private UserService us;
 	
+	@PostMapping(value="/addUser",consumes="application/json")
+	public String addUser(@RequestBody User user) {
+		
+		us.addUser(user);
+		return "User added.";
+	}
+	@PostMapping(value="/forgotPwd/{uname}")
+	public String getPassword(@PathVariable String uname) {
+		Encryption encrypter = Encryption.getEncrypter();
+		return encrypter.DecodePassword(us.forgotPassword(uname));
+	}
 	@PostMapping(value="/auth", consumes="application/json", produces="application/json")
 	public ResponseEntity<?> authentication(@RequestBody Login login, HttpSession session) {
 		User u = us.validate(login);
@@ -47,9 +59,7 @@ public class UserController {
 			return new ResponseEntity<Integer>(us.addPolicyToUser(userId, policyId), HttpStatus.OK);
 		}
 		else
-			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);
-
-		
+			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);		
 	}
 	@PostMapping(value="/addVehicle/{userId}/{vehicleId}", consumes="application/json")
 	public ResponseEntity<?> addUserVehicle(@PathVariable int userId,@PathVariable String vehicleId,HttpSession session) {
