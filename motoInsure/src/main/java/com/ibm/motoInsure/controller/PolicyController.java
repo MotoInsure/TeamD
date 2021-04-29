@@ -5,6 +5,8 @@ package com.ibm.motoInsure.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,21 +23,25 @@ public class PolicyController {
 	@Autowired
 	private PolicyService policyService;
 	
-	@PostMapping(value = "/calcIDV")
-	public String calcIDV(@RequestBody Vehicle vehicle) {
-		double idv = policyService.idvCalculation(vehicle);
+	@GetMapping(value = "/calcIDV/{registrationNo}")
+	public String calcIDV(@PathVariable(name = "registrationNo") String registrationNo) {
+		double idv = policyService.idvCalculation(registrationNo);
 		return "IDV of the vehicle :" + idv;
 		
 	}
 
-	//(no need)
-//	@PostMapping(value = "/addPolicy")
-//	public String addPolicy(@RequestBody Policy policy){
-//		int policyId = policyService.addPolicy(policy);
-//		return "Policy added with id: " + policyId; 
-//	}
-//	
-//	public void updatePolicy() {
-//	}
+	@GetMapping(value = "/calcPolicyAmount/{registrationNo}/{policyType}")
+	public String calcPolicyAmount(@PathVariable(name = "registrationNo") String registrationNo,@PathVariable(name = "policyType") String policyType) {
+		double policyAmount = policyService.policyAmount(registrationNo, policyType);
+		return "Policy amount of vehicle selcted "+ policyType+":"+policyAmount	;
+	}
+	
+	@GetMapping(value = "/calcMaxPolicyClaim/{registrationNo}")
+	public String maxPolicyClaim(@PathVariable(name = "registrationNo") String registrationNo) {
+		double maxPolicyClaim = policyService.maxPolicyClaim(registrationNo);
+		return "Inspite o selecting any type of policy, this user can claim max policy amount:" + maxPolicyClaim;
+		
+	}
+	
 
 }
