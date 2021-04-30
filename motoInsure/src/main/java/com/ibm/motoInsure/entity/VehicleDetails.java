@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Table(name="global_vehicles")
 
 public class VehicleDetails {
+	@GeneratedValue
 	@Id
 	private int id;
 	private String registrationNo;
@@ -20,6 +21,7 @@ public class VehicleDetails {
 	private String fuelType;
 	private LocalDate purchasingYear;
 	private double price;
+	
 	public String getRegistrationNo() {
 		return registrationNo;
 	}
