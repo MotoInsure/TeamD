@@ -1,5 +1,11 @@
 package com.ibm.motoInsure.Exception;
-
+/**
+ * <p>This class is exception thrown by policy</p>
+ * @author Shruti Mittal
+ * @coauthor Jai Baheti
+ * @since 18-04-2021
+ *
+ */
 public class InvalidPolicyException extends Exception{
 	
 	public InvalidPolicyException() {

@@ -1,6 +1,12 @@
 package com.ibm.motoInsure.entity;
 
 import javax.persistence.*;
+/**
+ * <p>This class implements admin entity provides getters and setters methods</p>
+ * @author Shruti Mittal
+ * @since 18-04-2021
+ *
+ */
 
 @Entity
 public class Admin {

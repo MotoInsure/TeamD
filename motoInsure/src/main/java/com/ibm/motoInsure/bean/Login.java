@@ -1,5 +1,9 @@
 package com.ibm.motoInsure.bean;
-
+/**
+ * <p>This class is login POJO</p>
+ * @author Jai Baheti
+ * @since 18-04-2021
+ */
 public class Login {
 	private String username;
 	private String password;
