@@ -4,82 +4,71 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ibm.motoInsure.entity.Vehicle;
+import com.ibm.motoInsure.entity.VehicleDetails;
 import com.ibm.motoInsure.repository.PolicyRepository;
-
+import com.ibm.motoInsure.repository.VehicleDetailsRepository;
 
 @Service
+@Transactional
 public class PolicyServiceImpl implements PolicyService {
 
 	@Autowired
-	private PolicyRepository policyRepo;
+	PolicyRepository policyRepo;
+	
+	@Autowired
+	VehicleDetailsRepository vehicleDetailsRepository;
 	
 	// divided every part to methods for easy understanding
 	
-	public int vehicleAge(Vehicle vehicle) {
+	public int vehicleAge(VehicleDetails vehicle) {
 		return LocalDate.now().getYear() - vehicle.getPurchasingYear().getYear();
 	}
 	
-	public double depreciationCalculation(Vehicle vehicle) {
+	public double depreciationCalculation(VehicleDetails vehicle) {
 		double ActualPrice = vehicle.getPrice();
 		double depreciationValue = ActualPrice*0.1;
 		return depreciationValue;
 	}
 
+	
 	@Override
-	public double idvCalculation(Vehicle vehicle) {
-		
+	public double idvCalculation(String registrationNo) {
+		VehicleDetails vehicle = vehicleDetailsRepository.findByRegistrationNo(registrationNo);
 		double depreciationValue = depreciationCalculation(vehicle);
 		double idv = (vehicle.getPrice() - (depreciationValue*vehicleAge(vehicle)))*0.05;
 		
-		return idv;
+		return Math.abs(idv);
 	}
 
 	@Override
-	public double policyAmount(Vehicle vehicle, String policyType) {
+	public double policyAmount(String registrationNo, String policyType) {
 	
-		double policyAmount = 0.00;
-		if(policyType =="Third-party") {
-			policyAmount = idvCalculation(vehicle);
+		double policyAmount = 0;
+		if(policyType.equals("Thirdparty")) {
+			policyAmount = idvCalculation(registrationNo);
 		}
-		else if(policyType =="Comprehensive") {
-			policyAmount = idvCalculation(vehicle)*1.5;
+		else if(policyType.equals("Comprehensive")) {
+			policyAmount = idvCalculation(registrationNo)*1.5;
 		}
-		return 0;
+		return policyAmount;
 	}
 
 	@Override
-	public double maxPolicyClaim(Vehicle vehicle) {
-		double ActualPrice = vehicle.getPrice();
-		int years = LocalDate.now().getYear() - vehicle.getPurchasingYear().getYear();
-		double PresentVehiclePrice = ActualPrice*0.1;
+	public double maxPolicyClaim(String registrationNo) {
+		VehicleDetails vehicle = vehicleDetailsRepository.findByRegistrationNo(registrationNo);
+		double depreciationValue = depreciationCalculation(vehicle);
+		double presentVehiclePrice = (vehicle.getPrice() - (depreciationValue*vehicleAge(vehicle)));
 		
-		return PresentVehiclePrice;
+		return Math.abs(presentVehiclePrice);
 	}
 	
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-/*	(no need)
- * @Override
-	public int addPolicy(Policy policy) {
-		//policyRepo.save(policy);
-		  //return ;   
-		  
-		  //This will only return the whole policy added to the table
-		 
-		return policyRepo.save(policy).getId(); // returns the policy id which is added to table.
-	}*/
 
 	
 }
