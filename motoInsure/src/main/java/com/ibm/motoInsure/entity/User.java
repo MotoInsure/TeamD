@@ -1,3 +1,13 @@
+/**
+ * This program implements an application that
+ * creates a user_details table with 
+ * OneToOne relationship with Policy
+ * and OneToMany relationship with VehicleDetails
+ * 
+ * @author Jai Baheti
+ * @version 1.0
+ * @since 2021-04-24
+ */
 package com.ibm.motoInsure.entity;
 
 import java.util.ArrayList;

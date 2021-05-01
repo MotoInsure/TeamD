@@ -31,8 +31,8 @@ public class UserController {
 		us.addUser(user);
 		return "User added.";
 	}
-	@PostMapping(value="/forgotPwd/{uname}")
-	public String getPassword(@PathVariable String uname) {
+	@GetMapping(value="/forgotPwd/{uname}")
+	public String getPassword(@PathVariable String uname) throws InvalidUserException {
 		Encryption encrypter = Encryption.getEncrypter();
 		return encrypter.DecodePassword(us.forgotPassword(uname));
 	}
@@ -55,7 +55,8 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/addPolicyToUser/{userId}/{policyId}")
-	public ResponseEntity<?> addPolicyToUser(@PathVariable int userId,@PathVariable int policyId, HttpSession session) throws InvalidUserException, InvalidPolicyException {
+	public ResponseEntity<?> addPolicyToUser(@PathVariable int userId,@PathVariable int policyId, HttpSession session) 
+			throws InvalidUserException {
 		if(session.getAttribute("USER")!=null){
 			return new ResponseEntity<Integer>(us.addPolicyToUser(userId, policyId), HttpStatus.OK);
 		}
@@ -63,7 +64,7 @@ public class UserController {
 			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);		
 	}
 	@PostMapping(value="/addVehicle/{userId}/{vehicleId}", consumes="application/json")
-	public ResponseEntity<?> addUserVehicle(@PathVariable int userId,@PathVariable String vehicleId,HttpSession session) {
+	public ResponseEntity<?> addUserVehicle(@PathVariable int userId,@PathVariable String vehicleId,HttpSession session) throws InvalidUserException {
 		if(session.getAttribute("USER")!=null){
 			return new ResponseEntity<Integer>(us.addUserVehicle(userId,vehicleId), HttpStatus.OK);
 		}
