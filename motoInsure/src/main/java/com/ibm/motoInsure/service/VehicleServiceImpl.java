@@ -10,7 +10,12 @@ import org.springframework.stereotype.Service;
 
 import com.ibm.motoInsure.entity.Vehicle;
 import com.ibm.motoInsure.repository.VehicleRepository;
-
+/**
+ * <p>This class is implementation of vehicle service class operations</p>
+ * @author Jai Baheti
+ * @since 18-04-2021
+ *
+ */
 @Service
 public class VehicleServiceImpl implements VehicleService {
 	

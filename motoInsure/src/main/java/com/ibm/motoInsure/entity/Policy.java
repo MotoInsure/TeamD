@@ -3,6 +3,11 @@ package com.ibm.motoInsure.entity;
 import java.util.Date;
 
 import javax.persistence.*;
+/**
+ * <p>This class implements policy entity and provides getters and setters methods</p>
+ * @author Hemeja Patoju
+ * @since 18-04-2021
+ */
 
 @Entity
 @SequenceGenerator(name="policyseq", sequenceName="seq_policy", initialValue =10001)

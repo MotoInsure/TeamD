@@ -10,7 +10,11 @@ import com.ibm.motoInsure.entity.Vehicle;
 import com.ibm.motoInsure.entity.VehicleDetails;
 import com.ibm.motoInsure.repository.PolicyRepository;
 import com.ibm.motoInsure.repository.VehicleDetailsRepository;
-
+/**
+ * <p>This class is implementation of policy service class operations</p>
+ * @author Hemaja Patoju
+ * @since 18-04-2021
+ */
 @Service
 @Transactional
 public class PolicyServiceImpl implements PolicyService {
@@ -22,10 +26,20 @@ public class PolicyServiceImpl implements PolicyService {
 	VehicleDetailsRepository vehicleDetailsRepository;
 	
 	// divided every part to methods for easy understanding
+	/**
+	 * 
+	 * @param vehicle
+	 * @return age of vehicle for depreciation calculation
+	 */
 	
 	public int vehicleAge(VehicleDetails vehicle) {
 		return LocalDate.now().getYear() - vehicle.getPurchasingYear().getYear();
 	}
+	/**
+	 * 
+	 * @param vehicle
+	 * @return depreciation in vehicle price
+	 */
 	
 	public double depreciationCalculation(VehicleDetails vehicle) {
 		double ActualPrice = vehicle.getPrice();

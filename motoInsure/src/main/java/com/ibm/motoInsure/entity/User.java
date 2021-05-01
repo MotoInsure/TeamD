@@ -25,7 +25,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
+/**
+ * <p>This class implements User entity and provides getters and setters methods</p>
+ * @author Jai Baheti
+ * @since 18-04-2021
+ */
 @Entity
 @Table(name="user_details")
 @SequenceGenerator(name="userseq", sequenceName="seq_user", initialValue =101)

@@ -13,7 +13,13 @@ import com.ibm.motoInsure.entity.VehicleDetails;
 import com.ibm.motoInsure.repository.PolicyRepository;
 import com.ibm.motoInsure.repository.UserRepository;
 import com.ibm.motoInsure.repository.VehicleDetailsRepository;
-
+/**
+ * <p>This class is implementation of user service class operations</p>
+ * @author Theres Thomas
+ * @coauthor Jai Baheti
+ * @since 18-04-2021
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
@@ -22,6 +28,7 @@ public class UserServiceImpl implements UserService {
 	private PolicyRepository pr;
 	@Autowired
 	private VehicleDetailsRepository vr;
+	
 	@Override
 	public int addPolicyToUser(int userId, int policyId) throws InvalidUserException {
 		User u = ur.findById(userId).orElseThrow(()->new InvalidUserException("Invalid User")); 
