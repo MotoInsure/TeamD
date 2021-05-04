@@ -1,0 +1,27 @@
+.image1 {
+    width: 100%;
+    height: 610px;
+}
+.logo {
+    margin-bottom: -570px;
+    margin-left: 211px;
+    /* padding-bottom: -300px; */
+}
+.card1 {
+    margin-left: 51%;
+    width: 400px;
+    margin-bottom: -580px;
+    
+}
+.button1 {
+    margin-left: 10px;
+    background-color: #16e4c8;
+    color: #fff;
+    bottom: 5px;
+}
+.button2 {
+    margin-left: 10px;
+    background-color: #16e4c8;
+    color: #fff;
+}
+
