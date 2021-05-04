@@ -5,7 +5,11 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
-
+/**
+ * <p>This class implements vehicle entity with registrationNo and provides getters and setters methods</p>
+ * @author Jai Baheti
+ * @since 18-04-2021
+ */
 @Entity
 @Table(name="global_vehicles")
 

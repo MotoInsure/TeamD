@@ -10,7 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
+/**
+ * <p>This class implements vehicle entity without registrationNo for searching purpose only and provides getters and setters methods</p>
+ * @author Jai Baheti
+ * @since 18-04-2021
+ */
 @Entity
 @Table(name="vehicle_details")
 @SequenceGenerator(name="vehicleseq", sequenceName="seq_vehicle", initialValue =1001)
