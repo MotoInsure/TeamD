@@ -1,6 +1,8 @@
 package com.ibm.motoInsure.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,9 +31,9 @@ public class PolicyController {
 	 * @return IDV_amount
 	 */
 	@GetMapping(value = "/calcIDV/{registrationNo}")
-	public String calcIDV(@PathVariable(name = "registrationNo") String registrationNo) {
+	public ResponseEntity<String> calcIDV(@PathVariable(name = "registrationNo") String registrationNo) {
 		double idv = policyService.idvCalculation(registrationNo);
-		return "IDV of the vehicle :" + idv;
+		return new ResponseEntity<String>("IDV of the vehicle :" + idv, HttpStatus.OK) ;
 		
 	}
 	/**
@@ -41,9 +43,9 @@ public class PolicyController {
 	 * @return Policy details
 	 */
 	@GetMapping(value = "/calcPolicyAmount/{registrationNo}/{policyType}")
-	public String calcPolicyAmount(@PathVariable(name = "registrationNo") String registrationNo,@PathVariable(name = "policyType") String policyType) {
+	public ResponseEntity<String> calcPolicyAmount(@PathVariable(name = "registrationNo") String registrationNo,@PathVariable(name = "policyType") String policyType) {
 		double policyAmount = policyService.policyAmount(registrationNo, policyType);
-		return "Policy amount of vehicle selcted "+ policyType+":"+policyAmount	;
+		return new ResponseEntity<String>("Policy amount of vehicle selcted "+ policyType+":"+policyAmount	, HttpStatus.OK) ;
 	}
 	/**
 	 * 
@@ -52,9 +54,9 @@ public class PolicyController {
 	 */
 	
 	@GetMapping(value = "/calcMaxPolicyClaim/{registrationNo}")
-	public String maxPolicyClaim(@PathVariable(name = "registrationNo") String registrationNo) {
+	public ResponseEntity<String> maxPolicyClaim(@PathVariable(name = "registrationNo") String registrationNo) {
 		double maxPolicyClaim = policyService.maxPolicyClaim(registrationNo);
-		return "Inspite o selecting any type of policy, this user can claim max policy amount:" + maxPolicyClaim;
+		return new ResponseEntity<String>("Inspite o selecting any type of policy, this user can claim max policy amount:" + maxPolicyClaim, HttpStatus.OK) ;
 		
 	}
 	
