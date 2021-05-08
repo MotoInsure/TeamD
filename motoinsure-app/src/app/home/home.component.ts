@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  RegistrationNumber
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -15,5 +15,7 @@ export class HomeComponent implements OnInit {
   direct() {
     this.router.navigate(['login']);
   }
-
+onInput(event){
+  this.RegistrationNumber=event.target.value;
+}
 }
