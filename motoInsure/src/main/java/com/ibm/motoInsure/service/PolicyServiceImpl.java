@@ -32,6 +32,7 @@ public class PolicyServiceImpl implements PolicyService {
 	 * @return age of vehicle for depreciation calculation
 	 */
 	
+	// this method is used to the calculate the age of the vehicle
 	public int vehicleAge(VehicleDetails vehicle) {
 		return LocalDate.now().getYear() - vehicle.getPurchasingYear().getYear();
 	}
@@ -40,43 +41,46 @@ public class PolicyServiceImpl implements PolicyService {
 	 * @param vehicle
 	 * @return depreciation in vehicle price
 	 */
-	
-	public double depreciationCalculation(VehicleDetails vehicle) {
+	// this method is 1st part to calculate the vehicle price reduced per year
+	public double PriceReducedPerYearCalculation(VehicleDetails vehicle) {
 		double ActualPrice = vehicle.getPrice();
-		double depreciationValue = ActualPrice*0.1;
-		return depreciationValue;
+		double PriceReducedPerYear = ActualPrice*0.1;
+		return PriceReducedPerYear;
 	}
 
 	
+	// This method is used to calculate the how much used should pay as basic insurance
 	@Override
-	public double idvCalculation(String registrationNo) {
+	public double dvCalculation(String registrationNo) {
 		VehicleDetails vehicle = vehicleDetailsRepository.findByRegistrationNo(registrationNo);
-		double depreciationValue = depreciationCalculation(vehicle);
-		double idv = (vehicle.getPrice() - (depreciationValue*vehicleAge(vehicle)))*0.05;
+		double depreciationValue = PriceReducedPerYearCalculation(vehicle);
+		double amount = (vehicle.getPrice() - (depreciationValue*vehicleAge(vehicle)))*0.05;
 		
-		return Math.abs(idv);
+		return Math.abs(amount);
 	}
 
+	// this method is used to calculate how much user should pay as insurance according to the policy he selected
 	@Override
 	public double policyAmount(String registrationNo, String policyType) {
 	
 		double policyAmount = 0;
 		if(policyType.equals("Thirdparty")) {
-			policyAmount = idvCalculation(registrationNo);
+			policyAmount = dvCalculation(registrationNo);
 		}
 		else if(policyType.equals("Comprehensive")) {
-			policyAmount = idvCalculation(registrationNo)*1.5;
+			policyAmount = dvCalculation(registrationNo)*1.5;
 		}
 		return policyAmount;
 	}
 
+	//this method is used to calculate how much user gets if something happened to his vehicle.
 	@Override
-	public double maxPolicyClaim(String registrationNo) {
+	public double insuredDeclaredValue(String registrationNo) {
 		VehicleDetails vehicle = vehicleDetailsRepository.findByRegistrationNo(registrationNo);
-		double depreciationValue = depreciationCalculation(vehicle);
-		double presentVehiclePrice = (vehicle.getPrice() - (depreciationValue*vehicleAge(vehicle)));
+		double depreciationValue = PriceReducedPerYearCalculation(vehicle);
+		double insuredDeclaredValue = (vehicle.getPrice() - (depreciationValue*vehicleAge(vehicle)));
 		
-		return Math.abs(presentVehiclePrice);
+		return Math.abs(insuredDeclaredValue);
 	}
 	
 	
