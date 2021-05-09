@@ -70,6 +70,11 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}
+	@Override
+	public User getUser(String name) {
+		User u =ur.findByUserName(name);
+		return u;
+	}
 	
 
 }
