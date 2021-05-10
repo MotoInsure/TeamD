@@ -1,0 +1,68 @@
+.image1 {
+    width: 100%;
+    height: 610px;
+}
+
+.card1 {
+    border: 1px solid black;
+    width: 400px;
+    /* margin-bottom: -580px; */
+    position: absolute;
+    right: 0.1%;
+    top: 70.2%;
+    background-color: rgb(241, 233, 218);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;;
+    border-bottom-left-radius: 15px;
+    
+}
+.button1 {
+    border: 1px solid black;
+    margin-left: 10px;
+    background-color:rgb(78, 64, 47);
+    color: #fff;
+    bottom: 5px;
+}
+.button2 {
+    border: 1px solid black;
+    margin-left: 10px;
+    background-color:rgb(78, 64, 47);
+    color: #fff;
+}
+ 
+.bg-img{
+    background:url('/assets/image/HOMEPIC.jpg') no-repeat center fixed;
+    min-height: 100vh;
+    width: 100%;
+    background-size: cover; 
+    /* -moz-background-size:cover; */
+    /* -o-background-size:cover; */
+    /* background-size: cover; */
+    /* background-position: top center; */
+}
+.cont{
+    position: absolute;
+    top:50%;
+    left:50%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* background:rgb(20 20 20 / 30%); */
+    /* padding:16px; */
+    border-radius:54px;
+    transform:translate(-50%,-50%);
+    color:rgb(56, 29, 29);
+}
+.tbutton{
+    cursor:pointer;
+    /* border:1px solid #000; */
+    background-color: rgb(241, 233, 218);
+    /* border-radius: 4px; */
+    color: #000;;
+    /* padding: 16px; */
+    margin-top: 55px;
+    }
+.tbutton:hover{
+    /* background-color: #000; */
+    transition: 1s;
+    color: #fff;
+}
