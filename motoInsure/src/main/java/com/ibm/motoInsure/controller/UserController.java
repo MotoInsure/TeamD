@@ -48,11 +48,9 @@ public class UserController {
 	 * @return new password
 	 */
 	@GetMapping(value="/forgotPwd/{uname}")
-	public User getPassword(@PathVariable String uname) throws InvalidUserException {
+	public String getPassword(@PathVariable String uname) throws InvalidUserException {
 		Encryption encrypter = Encryption.getEncrypter();
-		User u = us.getUser(uname);
-		u.setPassword(encrypter.DecodePassword(us.forgotPassword(uname)));
-		return u;
+		return encrypter.DecodePassword(us.forgotPassword(uname));
 	}
 	/**
 	 * 
