@@ -20,25 +20,25 @@ public interface VehicleService {
 	
 	
 	
-	/**
-	 * 
-	 * @param vehicle
-	 * @return id
-	 */
-	
-	int addVehicle(Vehicle vehicle);
-	/**
-	 * 
-	 * @param type
-	 * @return list of vehicles
-	 */
-	List getBrand(String type);
-	/**
-	 * 
-	 * @param Brand
-	 * @return set of vehicles
-	 */
-	Set<String> getModel(String Brand);
-	
+//	/**
+//	 * 
+//	 * @param vehicle
+//	 * @return id
+//	 */
+//	
+//	int addVehicle(Vehicle vehicle);
+//	/**
+//	 * 
+//	 * @param type
+//	 * @return list of vehicles
+//	 */
+//	List getBrand(String type);
+//	/**
+//	 * 
+//	 * @param Brand
+//	 * @return set of vehicles
+//	 */
+//	Set<String> getModel(String Brand);
+//	
 
 }
