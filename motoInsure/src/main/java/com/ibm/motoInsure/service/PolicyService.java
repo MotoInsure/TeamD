@@ -13,7 +13,7 @@ import com.ibm.motoInsure.entity.Vehicle;
 public interface PolicyService {
 
 	
-	double dvCalculation(String registrationNo);
+	double idvCalculation(String registrationNo);
 	double policyAmount(String registrationNo, String policyType);
-	double insuredDeclaredValue(String registrationNo);
+	double maxPolicyClaim(String registrationNo);
 }

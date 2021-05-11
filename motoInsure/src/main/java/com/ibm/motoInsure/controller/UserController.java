@@ -5,16 +5,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.motoInsure.EncodeDecode.Encryption;
+import com.ibm.motoInsure.Exception.InvalidPolicyException;
 import com.ibm.motoInsure.Exception.InvalidUserException;
 import com.ibm.motoInsure.bean.Login;
 import com.ibm.motoInsure.entity.User;
@@ -25,7 +24,6 @@ import com.ibm.motoInsure.service.UserService;
  * @since 18-04-2021
  *
  */
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value="/user")
 public class UserController {
@@ -58,9 +56,8 @@ public class UserController {
 	 * @param session
 	 * @return response of authentication
 	 */
-	@GetMapping(value="/auth", produces="application/json")
-	public ResponseEntity<?> authentication(@RequestParam("userName") String userName, @RequestParam("password") String password , HttpSession session) {
-		Login login = new Login(userName, password);
+	@PostMapping(value="/auth", consumes="application/json", produces="application/json")
+	public ResponseEntity<?> authentication(@RequestBody Login login, HttpSession session) {
 		User u = us.validate(login);
 		if(u != null) {	
 			session.setAttribute("USER", u); 
@@ -111,5 +108,6 @@ public class UserController {
 		}
 		else
 			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);
-		}
+		
+	}
 }
