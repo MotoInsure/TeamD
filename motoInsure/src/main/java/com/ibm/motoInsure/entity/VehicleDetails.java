@@ -13,9 +13,9 @@ import javax.persistence.*;
 @Entity
 @Table(name="global_vehicles")
 
-public class VehicleDetails {	
-	@Id
+public class VehicleDetails {
 	@GeneratedValue
+	@Id
 	private int id;
 	private String registrationNo;
 	private String type;
