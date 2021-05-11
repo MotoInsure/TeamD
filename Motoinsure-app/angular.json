@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+			  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+
             ],
-            "scripts": []
+            "scripts": [
+			  "node_modules/bootstrap/dist/js/bootstrap.min.js"
+			]
           },
           "configurations": {
             "production": {
@@ -119,10 +123,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "Motoinsure-app",
-  "cli": {
-    "analytics": "8e27a8b1-904e-469e-8135-d76d3bf4fb9c"
-  }
+    }},
+  "defaultProject": "Motoinsure-app"
 }
