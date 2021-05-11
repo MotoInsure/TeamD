@@ -1,4 +1,4 @@
-package com.ibm.motoInsure.websocket;
+package com.ibm.motoInsure.websocketcallback;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
