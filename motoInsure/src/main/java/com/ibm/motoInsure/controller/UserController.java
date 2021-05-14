@@ -47,10 +47,11 @@ public class UserController {
 	 * @param uname
 	 * @return new password
 	 */
-	@GetMapping(value="/forgotPwd/{uname}")
-	public String getPassword(@PathVariable String uname) throws InvalidUserException {
+	public User getPassword(@PathVariable String uname) throws InvalidUserException {
 		Encryption encrypter = Encryption.getEncrypter();
-		return encrypter.DecodePassword(us.forgotPassword(uname));
+		User u = us.getUser(uname);
+		u.setPassword(encrypter.DecodePassword(us.forgotPassword(uname)));
+		return u;
 	}
 	/**
 	 * 
@@ -106,10 +107,10 @@ public class UserController {
 	 */
 	@PostMapping(value="/addVehicle/{userId}/{vehicleId}", consumes="application/json")
 	public ResponseEntity<?> addUserVehicle(@PathVariable int userId,@PathVariable String vehicleId,HttpSession session) throws InvalidUserException {
-		if(session.getAttribute("USER")!=null){
+		//if(session.getAttribute("USER")!=null){
 			return new ResponseEntity<Integer>(us.addUserVehicle(userId,vehicleId), HttpStatus.OK);
-		}
-		else
-			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);
+		//}
+		//else
+			//return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);
 		}
 }

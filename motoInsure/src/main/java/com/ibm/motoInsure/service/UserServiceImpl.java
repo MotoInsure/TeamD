@@ -60,6 +60,11 @@ public class UserServiceImpl implements UserService {
 		return user.getId();
 	}
 	@Override
+	public User getUser(String name) {
+		User u =ur.findByUserName(name);
+		return u;
+	}
+	@Override
 	public String forgotPassword(String uname) throws InvalidUserException {
 		User u = ur.findByUserName(uname);
 		if(u == null) {
