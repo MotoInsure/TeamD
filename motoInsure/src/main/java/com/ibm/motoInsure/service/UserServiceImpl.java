@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	public int addPolicyToUser(int userId, int policyId) throws InvalidUserException {
 		User u = ur.findById(userId).orElseThrow(()->new InvalidUserException("Invalid User")); 
 		Policy p = pr.findById(policyId).get();		
-		u.setPolicy(p);	
+		p.setUser(u);	
 		ur.save(u);
 		return u.getId();
 	}
