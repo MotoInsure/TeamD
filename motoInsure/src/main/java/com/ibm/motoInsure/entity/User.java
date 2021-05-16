@@ -39,16 +39,15 @@ public class User {
 	@Column(name="user_id")
 	private int id;
 	private String userName;
-	@Column(name="user_contact", length=10)
+	@Column(name="user_contact", length=10, unique=true)	
 	private double phoneNo;
 	private String password;
+	@Column(unique=true)
 	private String email;
 	private String state;
 	private String city;
 	
-	@OneToOne
-	@JoinColumn(name="policy_id")
-	private Policy policy;
+	
 	
 	@OneToMany
 	@JoinTable(name="user_vehicle",
@@ -97,12 +96,6 @@ public class User {
 	}
 	public void setCity(String city) {
 		this.city = city;
-	}
-	public Policy getPolicy() {
-		return policy;
-	}
-	public void setPolicy(Policy policy) {
-		this.policy = policy;
 	}
 	public List<VehicleDetails> getVehiclesDetails() {
 		return vehiclesDetails;

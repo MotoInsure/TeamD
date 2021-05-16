@@ -24,6 +24,9 @@ public class Policy {
 	private Date purchasedDate;
 	private Date expiryDate;
 	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	public int getId() {
 		return id;
@@ -56,6 +59,12 @@ public class Policy {
 		this.maxClaimAmount = maxClaimAmount;
 	}
 	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Date getPurchasedDate() {
 		return purchasedDate;
 	}

@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	public int addPolicyToUser(int userId, int policyId) throws InvalidUserException {
 		User u = ur.findById(userId).orElseThrow(()->new InvalidUserException("Invalid User")); 
 		Policy p = pr.findById(policyId).get();		
-		u.setPolicy(p);	
+		p.setUser(u);	
 		ur.save(u);
 		return u.getId();
 	}
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 	public User validate(Login login) {
 		Encryption encrypter = Encryption.getEncrypter();
 		login.setPassword(encrypter.EncodePassword(login.getPassword()));
-		return ur.findByUserNameAndPassword(login.getUsername(), login.getPassword());
+		return ur.findByEmailAndPassword(login.getemail(), login.getPassword());
 	}
 	@Override
 	public int addUser(User user) {
@@ -65,15 +65,19 @@ public class UserServiceImpl implements UserService {
 		return u;
 	}
 	@Override
-	public String forgotPassword(String uname) throws InvalidUserException {
-		User u = ur.findByUserName(uname);
+	public User forgotPassword(String name) throws InvalidUserException {
+		User u = ur.findByUserName(name);
+		System.out.println(u);
 		if(u == null) {
 			throw new InvalidUserException("Invalid user.");
 		}
 		else {
-			return u.getPassword();
-		}
-		
+			return u;
+		}		
+	}
+	@Override
+	public User getUserByEmail(String email) {
+		return ur.findByEmail(email);		
 	}
 	
 
