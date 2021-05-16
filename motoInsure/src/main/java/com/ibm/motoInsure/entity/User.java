@@ -39,9 +39,10 @@ public class User {
 	@Column(name="user_id")
 	private int id;
 	private String userName;
-	@Column(name="user_contact", length=10)
+	@Column(name="user_contact", length=10, unique=true)	
 	private double phoneNo;
 	private String password;
+	@Column(unique=true)
 	private String email;
 	private String state;
 	private String city;

@@ -11,5 +11,6 @@ import com.ibm.motoInsure.entity.User;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 	User findByUserName(String name);
-	User findByUserNameAndPassword(String name, String password);
+	User findByEmailAndPassword(String name, String password);
+	User findByEmail(String email);
 }

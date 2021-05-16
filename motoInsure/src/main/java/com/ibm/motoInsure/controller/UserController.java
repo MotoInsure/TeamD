@@ -47,10 +47,13 @@ public class UserController {
 	 * @param uname
 	 * @return new password
 	 */
-	public User getPassword(@PathVariable String uname) throws InvalidUserException {
-		Encryption encrypter = Encryption.getEncrypter();
-		User u = us.getUser(uname);
-		u.setPassword(encrypter.DecodePassword(us.forgotPassword(uname)));
+	@GetMapping(value="/forgotPwd/{email}", produces="application/json")	
+	public User getPassword(@PathVariable String email) throws InvalidUserException {
+		Encryption encrypter = Encryption.getEncrypter();		
+		User u1 = us.getUserByEmail(email);
+		System.out.println(u1);
+		User u = us.forgotPassword(u1.getUserName());
+		u.setPassword(encrypter.DecodePassword(u.getPassword()));
 		return u;
 	}
 	/**
@@ -60,8 +63,8 @@ public class UserController {
 	 * @return response of authentication
 	 */
 	@GetMapping(value="/auth", produces="application/json")
-	public ResponseEntity<?> authentication(@RequestParam("userName") String userName, @RequestParam("password") String password , HttpSession session) {
-		Login login = new Login(userName, password);
+	public ResponseEntity<?> authentication(@RequestParam("email") String email, @RequestParam("password") String password , HttpSession session) {
+		Login login = new Login(email, password);
 		User u = us.validate(login);
 		if(u != null) {	
 			session.setAttribute("USER", u); 

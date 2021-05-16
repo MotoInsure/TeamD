@@ -17,7 +17,8 @@ import com.ibm.motoInsure.entity.User;
 public interface UserService {
 	int addUser(User user);
 	User getUser(String name);
-	String forgotPassword(String uname) throws InvalidUserException;
+	User getUserByEmail(String email);
+	User forgotPassword(String email) throws InvalidUserException;
 	int addPolicyToUser(int id,int policyId) throws InvalidUserException;
 	int addUserVehicle(int id,String registrationNo) throws InvalidUserException;
 	User validate(Login login);
