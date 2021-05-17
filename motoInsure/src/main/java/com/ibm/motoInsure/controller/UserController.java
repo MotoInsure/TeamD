@@ -95,11 +95,11 @@ public class UserController {
 	@PostMapping(value="/addPolicyToUser/{userId}/{policyId}")
 	public ResponseEntity<?> addPolicyToUser(@PathVariable int userId,@PathVariable int policyId, HttpSession session) 
 			throws InvalidUserException {
-		if(session.getAttribute("USER")!=null){
+		//if(session.getAttribute("USER")!=null){
 			return new ResponseEntity<Integer>(us.addPolicyToUser(userId, policyId), HttpStatus.OK);
-		}
-		else
-			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);		
+		//}
+//		else
+//			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);		
 	}
 	/**
 	 * 

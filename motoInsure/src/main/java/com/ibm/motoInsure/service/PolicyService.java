@@ -16,4 +16,5 @@ public interface PolicyService {
 	double dvCalculation(String registrationNo);
 	double policyAmount(String registrationNo, String policyType);
 	double insuredDeclaredValue(String registrationNo);
+	int savePolicy(Policy policy);
 }
