@@ -3,6 +3,7 @@ package com.ibm.motoInsure.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,8 @@ import com.ibm.motoInsure.service.PolicyService;
 
 @RestController
 @RequestMapping(value = "/policy")
+
+@CrossOrigin(exposedHeaders="Access-Control-Allow-Origin")
 public class PolicyController {
 	
 	@Autowired
@@ -60,5 +63,11 @@ public class PolicyController {
 		
 	}
 	
+	
+	@PostMapping(value ="/addPolicy")
+	public ResponseEntity<String> insertPolicy(@RequestBody Policy policy){
+		int policyId = policyService.savePolicy(policy);
+		return new ResponseEntity<String>("Policy added successfully:"+policyId, HttpStatus.CREATED);
+	}
 
 }
