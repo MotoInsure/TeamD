@@ -110,10 +110,10 @@ public class UserController {
 	 */
 	@PostMapping(value="/addVehicle/{userId}/{vehicleId}", consumes="application/json")
 	public ResponseEntity<?> addUserVehicle(@PathVariable int userId,@PathVariable String vehicleId,HttpSession session) throws InvalidUserException {
-		//if(session.getAttribute("USER")!=null){
+		if(session.getAttribute("USER")!=null){
 			return new ResponseEntity<Integer>(us.addUserVehicle(userId,vehicleId), HttpStatus.OK);
-		//}
-		//else
-			//return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);
+		}
+		else
+			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);
 		}
 }
