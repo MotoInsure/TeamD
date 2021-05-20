@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ibm.motoInsure.entity.Vehicle;
+import com.ibm.motoInsure.entity.Policy;
 import com.ibm.motoInsure.entity.VehicleDetails;
 import com.ibm.motoInsure.repository.PolicyRepository;
 import com.ibm.motoInsure.repository.VehicleDetailsRepository;
@@ -83,7 +83,11 @@ public class PolicyServiceImpl implements PolicyService {
 		return Math.abs(insuredDeclaredValue);
 	}
 	
-	
+	@Override
+	public int savePolicy(Policy policy) {
+		Policy savedPolicy =policyRepo.save(policy);
+		return savedPolicy.getId();
+	}
 	
 	
 	

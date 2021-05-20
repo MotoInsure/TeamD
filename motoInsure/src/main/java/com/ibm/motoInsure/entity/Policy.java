@@ -21,6 +21,7 @@ public class Policy {
 	private double idv;
 	private double policyAmount;
 	private double maxClaimAmount;
+	private int tenure;
 	private Date purchasedDate;
 	private Date expiryDate;
 	

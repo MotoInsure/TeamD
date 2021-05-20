@@ -1,5 +1,7 @@
 package com.ibm.motoInsure.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,10 @@ public class UserServiceImpl implements UserService {
 	private PolicyRepository pr;
 	@Autowired
 	private VehicleDetailsRepository vr;
+	
+	public User getUserById(int userId) {
+		return ur.findById(userId).get();
+	}
 	
 	@Override
 	public int addPolicyToUser(int userId, int policyId) throws InvalidUserException {

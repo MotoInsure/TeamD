@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ibm.motoInsure.bean.SMS;
 import com.ibm.motoInsure.service.SMSService;
 
+@CrossOrigin()
 @RestController
 public class SMSController {
 

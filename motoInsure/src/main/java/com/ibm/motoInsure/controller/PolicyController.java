@@ -1,5 +1,7 @@
 package com.ibm.motoInsure.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.motoInsure.entity.Policy;
+import com.ibm.motoInsure.entity.User;
 import com.ibm.motoInsure.entity.Vehicle;
+import com.ibm.motoInsure.repository.UserRepository;
 import com.ibm.motoInsure.service.PolicyService;
+import com.ibm.motoInsure.service.UserService;
 /**
  * <p>Policy controller controls data flow for calculation methods like IDV, Policy amount and max_claim amount in Policy</p>
  * @author Hemaja Patoju
@@ -25,6 +30,8 @@ public class PolicyController {
 	
 	@Autowired
 	private PolicyService policyService;
+	@Autowired
+	private UserService userService;
 	/**
 	 * 
 	 * @param registrationNo
@@ -58,6 +65,15 @@ public class PolicyController {
 		double maxPolicyClaim = policyService.insuredDeclaredValue(registrationNo);
 		return new ResponseEntity<String>("Inspite of selecting any type of policy, this user can claim max policy amount:" + maxPolicyClaim, HttpStatus.OK) ;
 		
+	}
+	@PostMapping(value ="/addPolicy/{userId}")
+	public ResponseEntity<String> insertPolicy(@RequestBody Policy policy,@PathVariable int userId){
+		
+		int policyId = policyService.savePolicy(policy);
+		User user = userService.getUserById(userId);
+		policy.setUser(user);
+		policyService.savePolicy(policy);
+		return new ResponseEntity<String>("Policy added successfully:"+policyId, HttpStatus.CREATED);
 	}
 	
 

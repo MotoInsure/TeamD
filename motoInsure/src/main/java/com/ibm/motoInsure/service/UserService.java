@@ -4,6 +4,8 @@
 
 package com.ibm.motoInsure.service;
 
+import java.util.Optional;
+
 import com.ibm.motoInsure.Exception.InvalidUserException;
 import com.ibm.motoInsure.bean.Login;
 import com.ibm.motoInsure.entity.User;
@@ -15,6 +17,7 @@ import com.ibm.motoInsure.entity.User;
  *
  */
 public interface UserService {
+	User getUserById(int userId);
 	int addUser(User user);
 	User getUser(String name);
 	User getUserByEmail(String email);
