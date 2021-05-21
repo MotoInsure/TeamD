@@ -23,7 +23,7 @@ public class VehicleDetails {
 	private String model;
 	private String variant;
 	private String fuelType;
-	private LocalDate purchasingYear;
+	private int purchasingYear;
 	private double price;
 	
 	public String getRegistrationNo() {
@@ -62,10 +62,10 @@ public class VehicleDetails {
 	public void setFuelType(String fuelType) {
 		this.fuelType = fuelType;
 	}
-	public LocalDate getPurchasingYear() {
+	public int getPurchasingYear() {
 		return purchasingYear;
 	}
-	public void setPurchasingYear(LocalDate purchasingYear) {
+	public void setPurchasingYear(int purchasingYear) {
 		this.purchasingYear = purchasingYear;
 	}
 	public double getPrice() {

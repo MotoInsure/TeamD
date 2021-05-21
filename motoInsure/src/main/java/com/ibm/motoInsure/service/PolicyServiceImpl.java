@@ -34,7 +34,7 @@ public class PolicyServiceImpl implements PolicyService {
 	
 	// this method is used to the calculate the age of the vehicle
 	public int vehicleAge(VehicleDetails vehicle) {
-		return LocalDate.now().getYear() - vehicle.getPurchasingYear().getYear();
+		return LocalDate.now().getYear() - vehicle.getPurchasingYear();
 	}
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class PolicyServiceImpl implements PolicyService {
 	// this method is 1st part to calculate the vehicle price reduced per year
 	public double PriceReducedPerYearCalculation(VehicleDetails vehicle) {
 		double ActualPrice = vehicle.getPrice();
-		double PriceReducedPerYear = ActualPrice*0.1;
+		double PriceReducedPerYear = ActualPrice*0.05;
 		return PriceReducedPerYear;
 	}
 
