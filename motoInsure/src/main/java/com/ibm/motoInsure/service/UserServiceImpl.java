@@ -71,8 +71,8 @@ public class UserServiceImpl implements UserService {
 		return u;
 	}
 	@Override
-	public User forgotPassword(String name) throws InvalidUserException {
-		User u = ur.findByUserName(name);
+	public User forgotPassword(String email) throws InvalidUserException {
+		User u = getUserByEmail(email);
 		System.out.println(u);
 		if(u == null) {
 			throw new InvalidUserException("Invalid user.");
