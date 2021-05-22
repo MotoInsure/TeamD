@@ -33,6 +33,11 @@ public class UserController {
 	
 	@Autowired 
 	private UserService us;
+	
+	@GetMapping(value="/getUser/{name}", produces="application/json")
+	public User getUser(@PathVariable String name) {
+		return us.getUser(name);
+	}
 	/**
 	 * 
 	 * @param user
