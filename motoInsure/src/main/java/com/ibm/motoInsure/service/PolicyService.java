@@ -1,8 +1,7 @@
 package com.ibm.motoInsure.service;
 
-import org.springframework.stereotype.Service;
 import com.ibm.motoInsure.entity.Policy;
-import com.ibm.motoInsure.entity.Vehicle;
+import com.ibm.motoInsure.entity.User;
 
 /**
  *<p>This service interface is for policy containing logic for calculation operations</p>
@@ -11,8 +10,7 @@ import com.ibm.motoInsure.entity.Vehicle;
  *
  */
 public interface PolicyService {
-
-	
+	Policy getPolicyByUserId(User userId);	
 	double dvCalculation(String registrationNo);
 	double policyAmount(String registrationNo, String policyType);
 	double insuredDeclaredValue(String registrationNo);

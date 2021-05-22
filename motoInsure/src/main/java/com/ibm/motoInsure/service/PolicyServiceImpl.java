@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ibm.motoInsure.entity.Policy;
+import com.ibm.motoInsure.entity.User;
 import com.ibm.motoInsure.entity.VehicleDetails;
 import com.ibm.motoInsure.repository.PolicyRepository;
 import com.ibm.motoInsure.repository.VehicleDetailsRepository;
@@ -87,6 +88,11 @@ public class PolicyServiceImpl implements PolicyService {
 	public int savePolicy(Policy policy) {
 		Policy savedPolicy =policyRepo.save(policy);
 		return savedPolicy.getId();
+	}
+	@Override
+	public Policy getPolicyByUserId(User userId) {
+		// TODO Auto-generated method stub
+		return policyRepo.findByUser(userId);
 	}
 	
 	

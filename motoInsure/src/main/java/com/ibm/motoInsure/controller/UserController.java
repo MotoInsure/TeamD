@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ibm.motoInsure.EncodeDecode.Encryption;
 import com.ibm.motoInsure.Exception.InvalidUserException;
 import com.ibm.motoInsure.bean.Login;
+import com.ibm.motoInsure.entity.Policy;
 import com.ibm.motoInsure.entity.User;
 import com.ibm.motoInsure.service.UserService;
 /**
@@ -101,6 +102,7 @@ public class UserController {
 //		else
 //			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);		
 	}
+	
 	/**
 	 * 
 	 * @param userId
