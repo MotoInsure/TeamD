@@ -3,7 +3,7 @@ package com.ibm.motoInsure.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ibm.motoInsure.entity.Policy;
-import com.ibm.motoInsure.entity.VehicleDetails;
+import com.ibm.motoInsure.entity.User;
 /**
  * <p>This interface is for policy data storage and retrieval</p>
  * @author Jai Baheti
@@ -11,5 +11,5 @@ import com.ibm.motoInsure.entity.VehicleDetails;
  */
 
 public interface PolicyRepository extends JpaRepository<Policy,Integer> {
-
+	Policy findByUser(User userId);
 }

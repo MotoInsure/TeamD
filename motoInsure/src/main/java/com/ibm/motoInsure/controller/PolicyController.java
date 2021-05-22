@@ -78,5 +78,10 @@ public class PolicyController {
 		return new ResponseEntity<String>("Policy added successfully:"+policyId, HttpStatus.CREATED);
 	}
 	
+	@GetMapping(value="/getPolicyByUserid/{userId}") 
+	public Policy getPolicyByUserid(@PathVariable int userId){
+		User user = userService.getUserById(userId);
+		return policyService.getPolicyByUserId(user);
+	}
 
 }
