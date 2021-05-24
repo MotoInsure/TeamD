@@ -1,5 +1,8 @@
 package com.ibm.motoInsure.controller;
 
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,26 +43,30 @@ public class VehicleController {
 //		vs.addVehicle(vehicle);
 //		return "Vehicle added";
 //	}
-//	/**
-//	 * 
-//	 * @param vehicle_type
-//	 * @return brand
-//	 */
-//		
-//	@GetMapping(value="/getVehicle/{type}")
-//	public List getBrand(@PathVariable String type) {
-//		return vs.getBrand(type);
-//	}
-//	/**
-//	 * 
-//	 * @param brand
-//	 * @return model
-//	 */
-//	@GetMapping(value="/getVehicle/{type}/{brand}", produces="application/json")
-//	public Set<String> getModel(@PathVariable String brand) {
-//		return vs.getModel(brand);
-//	}
-//	
+	/**
+	 * 
+	 * @param vehicle_type
+	 * @return brand
+	 */
+		
+	@GetMapping(value="/getVehicle/{type}", produces="application/json")
+	public List getBrand(@PathVariable String type) {
+		if (type.contains("Four"))
+			type="Four Wheeler";
+		else
+			type="Two Wheeler";
+		return vs.getBrand(type);
+	}
+	/**
+	 * 
+	 * @param brand
+	 * @return model
+	 */
+	@GetMapping(value="/getVehicle/{type}/{brand}", produces="application/json")
+	public Set<String> getModel(@PathVariable String brand) {
+		return vs.getModel(brand);
+	}
+	
 	
 	
 	
