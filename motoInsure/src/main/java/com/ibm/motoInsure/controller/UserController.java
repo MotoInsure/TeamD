@@ -44,9 +44,9 @@ public class UserController {
 	 * @return confirmation of user addition
 	 */
 	@PostMapping(value="/addUser",consumes="application/json")
-	public String addUser(@RequestBody User user) {		
+	public User addUser(@RequestBody User user) {		
 		us.addUser(user);
-		return "User added.";
+		return user;
 	}
 	/**
 	 * 

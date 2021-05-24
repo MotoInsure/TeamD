@@ -28,30 +28,28 @@ public class VehicleServiceImpl implements VehicleService {
 		return vdr.findByRegistrationNo(registrationNo);
 	}
 	
-//	List<Vehicle> vehicle_list = new ArrayList<>();
-//	@Autowired 
-//	private VehicleRepository vr;
-//	
-//	@Override
-//	public int addVehicle(Vehicle vehicle) {
-//		vr.save(vehicle);
-//		return vehicle.getId();
-//	}
-//	@Override
-//	public List getBrand(String type) {
-//		vehicle_list=vr.findByType(type);
-//		return vehicle_list;
-//	}
-//	@Override
-//	public Set<String> getModel(String Brand) {
-//		HashMap<String, Integer> hashmap = new HashMap();
-//		for (Vehicle vehicle : vehicle_list) 
-//			if(vehicle.getBrand().equalsIgnoreCase(Brand))
-//				hashmap.put(vehicle.getModel(),vehicle.getId());
-//		
-//		return hashmap.keySet();
-//		
-//	}
+	List<VehicleDetails> vehicle_list = new ArrayList<>();
+	
+	@Override
+	public List getBrand(String type) {
+		vehicle_list= vdr.findByType(type);
+		return vehicle_list;
+	}
+	@Override
+	public Set<String> getModel(String Brand) {
+		HashMap<String, Integer> hashmap = new HashMap();
+		for (VehicleDetails vehicle : vehicle_list) 
+			if(vehicle.getBrand().equalsIgnoreCase(Brand))
+				hashmap.put(vehicle.getModel(),vehicle.getId());
+		
+		return hashmap.keySet();
+		
+	}
+	@Override
+	public int addVehicle(Vehicle vehicle) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }

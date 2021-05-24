@@ -26,6 +26,13 @@ public class VehicleDetails {
 	private int purchasingYear;
 	private double price;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getRegistrationNo() {
 		return registrationNo;
 	}
@@ -74,5 +81,6 @@ public class VehicleDetails {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
 	
 }
