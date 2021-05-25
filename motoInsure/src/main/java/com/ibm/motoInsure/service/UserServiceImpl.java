@@ -17,8 +17,8 @@ import com.ibm.motoInsure.repository.UserRepository;
 import com.ibm.motoInsure.repository.VehicleDetailsRepository;
 /**
  * <p>This class is implementation of user service class operations</p>
- * @author Theres Thomas
- * @coauthor Jai Baheti
+ * @author Jai Baheti
+ * @coauthor Theres Thomas
  * @since 18-04-2021
  *
  */

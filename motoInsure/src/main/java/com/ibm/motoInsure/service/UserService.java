@@ -11,7 +11,8 @@ import com.ibm.motoInsure.bean.Login;
 import com.ibm.motoInsure.entity.User;
 /**
  * <p>This service interface is for user containing logic for add and reset password operations</p>
- * @author Theres Thomas
+ * @author Jai Baheti
+ * @coauthor Thomas Theres
  * @since18-04-2021
  * 
  *
