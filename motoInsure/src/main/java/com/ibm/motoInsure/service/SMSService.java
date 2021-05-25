@@ -8,7 +8,13 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-
+/**
+ * 
+ * @author Kajal Tiwari
+ * @version 1.0
+ * 
+ *
+ */
 @Component
 public class SMSService {
 

@@ -1,13 +1,3 @@
-/**
- * This program implements an application that
- * creates a user_details table with 
- * OneToOne relationship with Policy
- * and OneToMany relationship with VehicleDetails
- * 
- * @author Jai Baheti
- * @version 1.0
- * @since 2021-04-24
- */
 package com.ibm.motoInsure.entity;
 
 import java.util.ArrayList;
@@ -24,12 +14,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 /**
- * <p>This class implements User entity and provides getters and setters methods</p>
+ * This program implements an application that
+ * creates a user_details table with 
+ * OneToOne relationship with Policy
+ * and OneToMany relationship with VehicleDetails
+ * 
  * @author Jai Baheti
- * @since 18-04-2021
+ * @version 1.0
+ * @since 2021-04-24
  */
+
 @Entity
 @Table(name="user_details")
 @SequenceGenerator(name="userseq", sequenceName="seq_user", initialValue =101)
