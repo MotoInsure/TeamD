@@ -101,11 +101,7 @@ public class UserController {
 	@PostMapping(value="/addPolicyToUser/{userId}/{policyId}")
 	public ResponseEntity<?> addPolicyToUser(@PathVariable int userId,@PathVariable int policyId, HttpSession session) 
 			throws InvalidUserException {
-		//if(session.getAttribute("USER")!=null){
-			return new ResponseEntity<Integer>(us.addPolicyToUser(userId, policyId), HttpStatus.OK);
-		//}
-//		else
-//			return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);		
+			return new ResponseEntity<Integer>(us.addPolicyToUser(userId, policyId), HttpStatus.OK);	
 	}
 	
 	/**
@@ -117,10 +113,6 @@ public class UserController {
 	 */
 	@PostMapping(value="/addVehicle/{userId}/{vehicleId}", consumes="application/json")
 	public ResponseEntity<?> addUserVehicle(@PathVariable int userId,@PathVariable String vehicleId,HttpSession session) throws InvalidUserException {
-	//	if(session.getAttribute("USER")!=null){
 			return new ResponseEntity<Integer>(us.addUserVehicle(userId,vehicleId), HttpStatus.OK);
-	//	}
-	//	else
-		//	return new ResponseEntity<String>("Sorry! You're not logged in",HttpStatus.NOT_FOUND);
 	}
 }

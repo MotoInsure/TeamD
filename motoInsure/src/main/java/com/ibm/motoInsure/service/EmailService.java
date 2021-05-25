@@ -2,6 +2,7 @@ package com.ibm.motoInsure.service;
 
 import java.io.IOException;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,12 @@ import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Email;
 import com.sendgrid.helpers.mail.objects.Personalization;
 
+/**
+ * 
+ * @author Kajal Tiwari
+ * @version 1.0
+ *
+ */
 @Service
 public class EmailService {
 

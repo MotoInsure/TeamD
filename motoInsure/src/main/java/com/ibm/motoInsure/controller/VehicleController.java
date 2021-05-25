@@ -29,20 +29,6 @@ public class VehicleController {
 		return vs.getPrice(registrationNo);		
 	}
 	
-//	private Map<String, String> vehicles;
-//	@Autowired
-//	private VehicleService vs;
-//	/**
-//	 * 
-//	 * @param vehicle
-//	 * @return confirmation of vehicle addition
-//	 */
-//	
-//	@PostMapping(value="/addVehicle", consumes="application/json")
-//	public String addVehicle(@RequestBody Vehicle vehicle) {
-//		vs.addVehicle(vehicle);
-//		return "Vehicle added";
-//	}
 	/**
 	 * 
 	 * @param vehicle_type
